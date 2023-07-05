@@ -39,12 +39,12 @@ export async function POST(req: Request) {
       return new Response("Already friends with user", { status: 400 });
     }
 
-    pusherServer.trigger(toPusherKey(`user:${idToAdd}:incoming:friend_requests`), "incoming:friend_requests", {
+    await pusherServer.trigger(toPusherKey(`user:${idToAdd}:incoming:friend_requests`), "incoming:friend_requests", {
       senderId: session.user.id,
       senderEmail: session.user.email,
     });
 
-    db.sadd(`user:${idToAdd}:incoming:friend_requests`, session.user.id);
+    await db.sadd(`user:${idToAdd}:incoming:friend_requests`, session.user.id);
     return new Response("Ok");
   } catch (error) {
     if (error instanceof z.ZodError) {
