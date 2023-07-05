@@ -42,8 +42,6 @@ const page = async ({ params }: pageProps) => {
   const chatPartner = JSON.parse(chatPart) as User;
   const initialMessages = await getChatMessages(chatId);
 
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
   return (
     <div className="flex-1 justify-between flex flex-col h-full max-h-[calc(100vh-6rem)]">
       <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200 ">
