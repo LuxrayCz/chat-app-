@@ -19,7 +19,9 @@ const page = async ({}) => {
 
   const friendsWithLastMessage = await Promise.all(
     friends.map(async (oneFriend) => {
-      const [lastMessage] = (await fetchRedis("zrange", `chat:${chatHrefConstruction(session.user.id, oneFriend.id)}:messages`, -1, -1)) as string[];
+      const [lastMessage] = (await fetchRedis("zrange", `chat:${chatHrefConstruction(session.user.id, oneFriend.id)}:messages`, -1, -1)) as
+        | string[]
+        | [];
       const parsedLastMessage = JSON.parse(lastMessage) as Message;
       return { ...oneFriend, parsedLastMessage };
     })
