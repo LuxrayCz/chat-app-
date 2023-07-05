@@ -31,7 +31,7 @@ const Layout = async ({ children }: layoutProps) => {
   if (!session) notFound();
 
   const friends = await getFriendsByUserId(session.user.id);
-  console.log(friends);
+
   const unseenRequestCount = ((await fetchRedis("smembers", `user:${session.user.id}:incoming:friend_requests`)) as User[]).length;
   return (
     <div className="w-full flex h-screen ">
