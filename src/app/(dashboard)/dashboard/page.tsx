@@ -33,7 +33,7 @@ const page = async ({}) => {
         <p className="text-sm text-zinc-500">Nothing to show here..</p>
       ) : (
         friendsWithLastMessage.map((friend) => (
-          <div className="relative bg-zinc-50 border border-zinc-200 p-3 rounded-md" key={friend.id}>
+          <div className="relative bg-zinc-50 border border-zinc-200 p-3 rounded-md mb-2" key={friend.id}>
             <div className="absolute right-4 inset-y-0 flex items-center">
               <ChevronRight className="h-7 w-7 text-zinc-400" />
             </div>
